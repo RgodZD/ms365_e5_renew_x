@@ -6,9 +6,10 @@ RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
     && sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
     && apt update \
     && apt install -y wget unzip\
-    && wget https://64ymql-my.sharepoint.com/personal/z_64ymql_onmicrosoft_com/Documents/%E9%95%9C%E5%83%8F/Microsoft365_E5_Renew_X.zip
-    && unzip Microsoft365_E5_Renew_X.zip -d /renewx \
-    && rm -rf Microsoft365_E5_Renew_X.zip
+
+COPY Microsoft365_E5_Renew_X.zip
+RUN unzip Microsoft365_E5_Renew_X.zip -d /renewx \
+RUN rm -rf Microsoft365_E5_Renew_X.zip
 
 FROM mcr.microsoft.com/dotnet/aspnet:3.1
 
